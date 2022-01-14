@@ -1,5 +1,4 @@
 import { ServerStyleSheets } from "@material-ui/core";
-import { AppContext } from "next/app";
 import Document, {
   DocumentContext,
   DocumentInitialProps,

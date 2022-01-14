@@ -9,6 +9,7 @@ import {
   Typography
 } from "@material-ui/core";
 import type { NextPage } from "next";
+import NextLink from "next/link";
 import Layout from "../components/Layout";
 import { data } from "../utils/data";
 
@@ -21,16 +22,18 @@ const Home: NextPage = () => {
           {data.products.map((product) => (
             <Grid item md={4} key={product.name}>
               <Card>
-                <CardActionArea>
-                  <CardMedia
-                    component='img'
-                    image={product.image}
-                    title={product.name}
-                  />
-                  <CardContent>
-                    <Typography>{product.name}</Typography>
-                  </CardContent>
-                </CardActionArea>
+                <NextLink href={`/product/${product.slug}`} passHref>
+                  <CardActionArea>
+                    <CardMedia
+                      component='img'
+                      image={product.image}
+                      title={product.name}
+                    />
+                    <CardContent>
+                      <Typography>{product.name}</Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </NextLink>
                 <CardActions>
                   <Typography>${product.price}</Typography>
                   <Button size='small' color='primary'>

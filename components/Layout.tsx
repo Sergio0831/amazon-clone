@@ -10,16 +10,19 @@ import NextLink from "next/link";
 import useStyles from "../utils/styles";
 
 type LayoutProps = {
-  children: React.ReactChild;
+  title?: string;
+  description?: string;
+  children: React.ReactChild | React.ReactChild[];
 };
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, description, title }: LayoutProps) => {
   const classes = useStyles();
 
   return (
     <>
       <Head>
-        <title>Next Amazona</title>
+        <title>{title ? `${title} - Next Amazona` : "Next Amazona"}</title>
+        {description && <meta name='description' content={description} />}
       </Head>
       <AppBar className={classes.navbar} position='static'>
         <Toolbar>
