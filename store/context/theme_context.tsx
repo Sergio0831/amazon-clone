@@ -1,5 +1,6 @@
+import Cookies from "js-cookie";
 import { createContext, Dispatch, FC, useContext, useReducer } from "react";
-import { ActionType, ThemeActions } from "../actions/theme_actions";
+import { ActionType } from "../actions/theme_actions";
 import { themeReducer } from "../reducers/theme_reduser";
 
 export interface ThemeState {
@@ -8,7 +9,7 @@ export interface ThemeState {
 }
 
 const initialThemeState: ThemeState = {
-  darkMode: false,
+  darkMode: Cookies.get("darkMode") === "ON" ? true : false,
   darkModeHandler: () => {}
 };
 
@@ -21,6 +22,8 @@ export const ThemeProvider: FC = ({ children }) => {
     dispatch({
       type: state.darkMode ? ActionType.DarkThemeOff : ActionType.DarkThemeOn
     });
+    const newDarkMode = !state.darkMode;
+    Cookies.set("darkMode", newDarkMode ? "ON" : "OFF");
   };
 
   return (

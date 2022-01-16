@@ -10,7 +10,6 @@ import {
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import Head from "next/head";
 import NextLink from "next/link";
-import { ActionType } from "../store/actions/theme_actions";
 import { useThemeContext } from "../store/context/theme_context";
 import useStyles from "../utils/styles";
 
@@ -47,12 +46,6 @@ const Layout = ({ children, description, title }: LayoutProps) => {
     }
   });
   const classes = useStyles();
-
-  // const darkModeHandler = () => {
-  //   dispatch({
-  //     type: darkMode ? ActionType.DarkThemeOff : ActionType.DarkThemeOn
-  //   });
-  // };
 
   return (
     <>

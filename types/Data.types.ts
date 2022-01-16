@@ -8,7 +8,7 @@ export type Product = {
   category: string;
   image: string;
   isFeatured: boolean;
-  featuredImage: string;
+  featuredImage?: string;
   price: number;
   brand: string;
   rating: number;
